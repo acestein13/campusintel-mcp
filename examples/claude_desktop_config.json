@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "campusintel": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/ABSOLUTE/PATH/TO/campusintel-mcp",
+        "run",
+        "campusintel-mcp"
+      ],
+      "env": {
+        "OPENALEX_API_KEY": "YOUR_OPENALEX_API_KEY",
+        "COLLEGE_SCORECARD_API_KEY": "YOUR_COLLEGE_SCORECARD_API_KEY"
+      }
+    }
+  }
+}
+

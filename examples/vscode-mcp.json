@@ -1,0 +1,15 @@
+{
+  "servers": {
+    "campusintel": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${workspaceFolder}",
+        "run",
+        "campusintel-mcp"
+      ]
+    }
+  }
+}
+
