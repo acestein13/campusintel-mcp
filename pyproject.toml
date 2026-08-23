@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "campusintel-mcp"
+version = "1.0.0"
+description = "MCP server for exploring university research, researchers, programs, and institutional data."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Ace Stein" }]
+keywords = ["mcp", "higher-education", "openalex", "college-scorecard", "research"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Education",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+  "httpx[socks]>=0.28.1,<1",
+  "mcp[cli]>=2.0.0,<3",
+  "pydantic>=2.11,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.17,<2",
+  "pytest>=8.4,<9",
+  "pytest-cov>=6.2,<7",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+campusintel-mcp = "campusintel_mcp.server:main"
+
+[project.urls]
+Homepage = "https://github.com/acestein13/campusintel-mcp"
+Issues = "https://github.com/acestein13/campusintel-mcp/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/campusintel_mcp"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --strict-config"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["campusintel_mcp"]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["campusintel_mcp"]
